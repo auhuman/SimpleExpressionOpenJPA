@@ -22,14 +22,15 @@ public class EmployeeServiceTest {
 
     List<Boolean> expected = Collections.emptyList();
 
-    @Test
+
+    //@Test
     public void testBooleanSelect(){
 
         List<Boolean> actual = employeeService.booleanSelect();
         Assert.assertEquals(expected, actual);
     }
 
-    @Test
+    //@Test
     public void testCaseExpression(){
         List<Boolean> actual = employeeRepository.caseDescription();
         Assert.assertEquals(expected, actual);
@@ -37,7 +38,37 @@ public class EmployeeServiceTest {
 
     @Test
     public void testCaseSelect(){
+        Employee employee = new Employee();
+        employee.setFirstName("1");
+        employee.setLastName("2");
+        employee.setDescription("3");
+        employeeRepository.save(employee);
+
+        employee = new Employee();
+        employee.setFirstName("4");
+        employee.setLastName("5");
+        employeeRepository.save(employee);
+
         List<Boolean> actual = employeeService.caseSelect();
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testCaseGroupBy(){
+        Employee employee = new Employee();
+        employee.setFirstName("1");
+        employee.setLastName("2");
+        employee.setDescription("3");
+        employeeRepository.save(employee);
+
+        employee = new Employee();
+        employee.setFirstName("4");
+        employee.setLastName("5");
+        employeeRepository.save(employee);
+
+
+        List<Boolean> actual = null;
+        employeeService.caseGroupBy();
         Assert.assertEquals(expected, actual);
     }
 

@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    data: classpath*:test-data.sql
+    url: jdbc:h2:mem:test_mem;INIT=CREATE SCHEMA IF NOT EXISTS calm_ist;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: 123
+    driverClassName: org.h2.Driver
+  jpa:
+    show-sql: true
+    generate-ddl: true
