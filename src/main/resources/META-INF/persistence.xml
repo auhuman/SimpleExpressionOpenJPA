@@ -15,13 +15,7 @@
 
         <properties>
 
-            <property name="openjpa.jdbc.SchemaFactory" value="native(ForeignKeys=true)"/>
-            <property name="openjpa.DataCache" value="false"/>
-            <property name="openjpa.Log" value="DefaultLevel=WARN, Runtime=WARN, Tool=WARN, SQL=WARN"/>
-            <property name="openjpa.jdbc.DBDictionary" value="postgres"/>
-            <property name="openjpa.jdbc.Schema" value="apm_alarm_management"/>
-            <property name="openjpa.Multithreaded" value="true"/>
-            <property name="openjpa.ConnectionFactoryProperties" value="PrintParameters=True"/>
+            <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
 
         </properties>
     </persistence-unit>

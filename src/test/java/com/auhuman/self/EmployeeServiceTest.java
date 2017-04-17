@@ -17,10 +17,33 @@ public class EmployeeServiceTest {
     @Autowired
     EmployeeService employeeService;
 
+    @Autowired
+    EmployeeRepository employeeRepository;
+
+    List<Boolean> expected = Collections.emptyList();
+
     @Test
     public void testBooleanSelect(){
-        List<Boolean> expected = Collections.emptyList();
+
         List<Boolean> actual = employeeService.booleanSelect();
         Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void testCaseExpression(){
+        List<Boolean> actual = employeeRepository.caseDescription();
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testCaseSelect(){
+        List<Boolean> actual = employeeService.caseSelect();
+        Assert.assertEquals(expected, actual);
+    }
+
+    /*@Test
+    public void testIsNotNullExpression(){
+        List<Boolean> actual = employeeRepository.isNotNullDescription();
+        Assert.assertEquals(expected, actual);
+    }*/
 }

@@ -3,6 +3,7 @@ package com.auhuman.self;
 import com.mysema.query.jpa.impl.JPAQuery;
 import com.mysema.query.support.Expressions;
 import com.mysema.query.types.expr.BooleanExpression;
+import com.mysema.query.types.expr.CaseBuilder;
 import com.mysema.query.types.path.BooleanPath;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,15 @@ public class EmployeeService {
         BooleanPath booleanPath = Expressions.booleanPath("isGoodDescription");
         BooleanExpression notNullDesc = QEmployee.employee.description.isNotEmpty();
         return jpaQuery.from(employee).list(notNullDesc);
+    }
+
+    List<Boolean> caseSelect(){
+        JPAQuery jpaQuery = new JPAQuery(entityManager);
+        QEmployee employee = QEmployee.employee;
+        BooleanPath booleanPath = Expressions.booleanPath("isGoodDescription");
+        BooleanExpression notNullDesc = QEmployee.employee.description.isNotNull();
+        BooleanExpression caseExpression = new CaseBuilder().when(QEmployee.employee.description.isNotNull()).then(true).otherwise(false);
+        return jpaQuery.from(employee).list(caseExpression);
     }
 
 }
